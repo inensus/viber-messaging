@@ -1,6 +1,6 @@
 {
   "name": "inensus/viber-messaging",
-  "description": "Package description",
+  "description": "Viber messaging integration for MicroPowerManager",
   "type": "package",
   "require": {
     "bogdaan/viber-bot-php": "^0.0.15"
@@ -8,9 +8,9 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "author",
-      "email": "email",
-      "role": "role"
+      "name": "kamuran engin",
+      "email": "ke@inensus.com",
+      "role": "Developer"
     }
   ],
   "minimum-stability": "dev",
