@@ -1,0 +1,29 @@
+{
+  "name": "inensus/viber-messaging",
+  "description": "Package description",
+  "type": "package",
+  "require": {
+    "bogdaan/viber-bot-php": "^0.0.15"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "author",
+      "email": "email",
+      "role": "role"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Inensus\\ViberMessaging\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Inensus\\ViberMessaging\\Providers\\ServiceProvider"
+      ]
+    }
+  }
+}
