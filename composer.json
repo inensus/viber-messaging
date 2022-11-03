@@ -22,7 +22,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Inensus\\ViberMessaging\\Providers\\ServiceProvider"
+        "Inensus\\ViberMessaging\\Providers\\ViberMessagingServiceProvider"
       ]
     }
   }
