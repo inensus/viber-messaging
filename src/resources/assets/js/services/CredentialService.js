@@ -7,13 +7,15 @@ export class CredentialService {
         this.credential = {
             id: null,
             apiToken: null,
+            deepLink: null
         }
     }
 
     fromJson (credentialData) {
         this.credential = {
             id: credentialData.id,
-            apiToken: credentialData.api_token
+            apiToken: credentialData.api_token,
+            deepLink: credentialData.deep_link
         }
         return this.credential
     }

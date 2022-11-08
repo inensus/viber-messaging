@@ -8,11 +8,11 @@ use Inensus\ViberMessaging\Models\ViberCredential;
 
 class ViberCredentialService
 {
-    private $rootUrl;
 
     public function __construct(
         private ViberCredential $credential,
-        private WebhookService $webhookService
+        private WebhookService $webhookService,
+        private AccountService $accountService
 
     ) {
 
@@ -26,7 +26,10 @@ class ViberCredentialService
     {
         return $this->credential->newQuery()->firstOrCreate(['id' => 1], [
             'api_url' => null,
-            'api_token' => null
+            'api_token' => null,
+            'webhook_url' => null,
+            'has_webhook_created' => false,
+            'deep_link' => null,
         ]);
     }
 
@@ -35,6 +38,9 @@ class ViberCredentialService
         return $this->credential->newQuery()->first();
     }
 
+    /**
+     * @throws \Inensus\ViberMessaging\Exceptions\WebhookNotCreatedException
+     */
     public function updateCredentials($data)
     {
         $credential = $this->credential->newQuery()->find($data['id']);
@@ -47,6 +53,12 @@ class ViberCredentialService
 
         if (!$credential->has_webhook_created) {
             $this->webhookService->createWebHook($credential);
+        }
+
+        if (!$credential->deep_link) {
+            $uri = $this->accountService->getAccountInfo($credential);
+            $credential->deep_link = "viber://pa?chatURI=$uri&text=register+change_this_with_your_meter_serial_number" ;
+            $credential->save();
         }
 
         return $credential->fresh();

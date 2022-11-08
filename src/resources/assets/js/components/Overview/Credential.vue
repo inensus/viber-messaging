@@ -23,6 +23,11 @@
                                     </md-field>
                                 </div>
 
+                                <div v-if="credentialService.credential.deepLink"
+                                    class="md-layout-item  md-xlarge-size-100 md-large-size-100 md-medium-size-100 md-small-size-100">
+                                 <p> Please distribute {{credentialService.credential.deepLink}} to your customers and
+                                     ask them to send their meter number to register our Viber communication system. </p>
+                                </div>
 
                             </div>
                         </div>
